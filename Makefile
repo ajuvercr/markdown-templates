@@ -1,8 +1,12 @@
-all: output/acm-paper.pdf output/ieee-paper.pdf output/lncs-paper.pdf #output/ieee-paper.tex output/lncs-paper.tex output/acm-paper.tex
+DIR = /paper/
+PAPER = paper
+OUT_DIR = /paper/out/
 
-output/ieee-paper.pdf output/ieee-paper.tex: paper/paper.md
+all: acm.pdf ieee.pdf lncs.pdf #ieee.tex lncs.tex acm.tex
+
+ieee.pdf ieee.tex:
 	cp ./styles/IEEEtran.cls .
-	mkdir -p output
+	mkdir -p $(OUT_DIR)
 	pandoc  --wrap=preserve \
 		--filter pandoc-crossref \
 		--filter pandoc-citeproc \
@@ -14,12 +18,12 @@ output/ieee-paper.pdf output/ieee-paper.tex: paper/paper.md
 		--include-before-body=./templates/ieee-longtable-fix-preamble.latex \
 		--include-before-body=./ieee-author-preamble.latex \
 		--template=./templates/ieee.latex \
-		-o output/ieee-paper.$(subst output/ieee-paper.,,$@) paper/paper.md
+		-o $(OUT_DIR)$(subst ieee,$(PAPER)-iee,$@) $(DIR)$(PAPER).md
 	rm ./IEEEtran.cls
 
-output/acm-paper.pdf output/acm-paper.tex: paper/paper.md
+acm.pdf acm.tex:
 	cp ./styles/acmart.cls .
-	mkdir -p ./output
+	mkdir -p $(OUT_DIR)
 	pandoc  --wrap=preserve \
 		--filter pandoc-crossref \
 		--filter pandoc-citeproc \
@@ -31,12 +35,12 @@ output/acm-paper.pdf output/acm-paper.tex: paper/paper.md
 		--include-before-body=./templates/acm-longtable-fix-preamble.latex \
 		--include-before-body=./acm-author-preamble.latex \
 		--template=./templates/acm.latex \
-		-o output/acm-paper.$(subst output/acm-paper.,,$@) paper/paper.md
+		-o $(OUT_DIR)$(subst acm,$(PAPER)-acm,$@) $(DIR)$(PAPER).md
 	rm ./acmart.cls
 
-output/lncs-paper.pdf output/lncs-paper.tex: paper/paper.md
+lncs.pdf lncs.tex:
 	cp ./styles/llncs.cls .
-	mkdir -p ./output
+	mkdir -p $(OUT_DIR)
 	pandoc  --wrap=preserve \
 		--filter pandoc-crossref \
 		--filter pandoc-citeproc \
@@ -46,9 +50,9 @@ output/lncs-paper.pdf output/lncs-paper.tex: paper/paper.md
 		--number-sections \
 		./llncs-packages.yaml \
 		--template=./templates/llncs.latex \
-		-o output/lncs-paper.$(subst output/lncs-paper.,,$@) paper/paper.md
+		-o $(OUT_DIR)$(subst lncs,$(PAPER)-lncs,$@) $(DIR)$(PAPER).md
 	rm ./llncs.cls
 
 clean:
-	rm output/*
+	rm -r $(OUT_DIR)
 

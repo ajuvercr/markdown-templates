@@ -41,8 +41,11 @@ WORKDIR /workspace
 ENV LD_LIBRARY_PATH "${OCLGRIND}/lib:${LSB}/lib:./lib:${LD_LIBRARYPATH}"
 ENV PATH "${PATH}:${OCLGRIND}/bin}"
 
+COPY . /workspace
+
 #start beakerx/jupyter by default
 #CMD ["beakerx","--allow-root"]
 
-CMD ["/bin/bash"]
+CMD ["/bin/bash", "-c", "make"]
+
 
