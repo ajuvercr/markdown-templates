@@ -37,7 +37,7 @@ RUN tar -xvf linux-ghc8-pandoc-2-0.tar.gz
 RUN mv pandoc-crossref /usr/bin/
 
 #container variables and startup...
-WORKDIR /workspace
+WORKDIR /paper
 ENV LD_LIBRARY_PATH "${OCLGRIND}/lib:${LSB}/lib:./lib:${LD_LIBRARYPATH}"
 ENV PATH "${PATH}:${OCLGRIND}/bin}"
 
@@ -46,6 +46,5 @@ COPY . /workspace
 #start beakerx/jupyter by default
 #CMD ["beakerx","--allow-root"]
 
-CMD ["/bin/bash", "-c", "make"]
-
+CMD ["make", "-f", "/workspace/Makefile"]
 

@@ -1,55 +1,57 @@
-DIR = /paper/
-PAPER = paper
-OUT_DIR = /paper/out/
+DIR ?= ./
+PAPER ?= paper
+OUT_DIR ?= ./out/
+
+INS_DIR ?= /workspace
 
 all: acm.pdf ieee.pdf lncs.pdf #ieee.tex lncs.tex acm.tex
 
 ieee.pdf ieee.tex:
-	cp ./styles/IEEEtran.cls .
+	cp $(INS_DIR)/styles/IEEEtran.cls .
 	mkdir -p $(OUT_DIR)
 	pandoc  --wrap=preserve \
 		--filter pandoc-crossref \
 		--filter pandoc-citeproc \
-		--filter ./pandoc-tools/table-filter.py \
-		--filter ./pandoc-tools/bib-filter.py \
+		--filter $(INS_DIR)/pandoc-tools/table-filter.py \
+		--filter $(INS_DIR)/pandoc-tools/bib-filter.py \
 		--number-sections \
-		--csl=./styles/ieee.csl \
-		./ieee-packages.yaml \
-		--include-before-body=./templates/ieee-longtable-fix-preamble.latex \
-		--include-before-body=./ieee-author-preamble.latex \
-		--template=./templates/ieee.latex \
+		--csl=$(INS_DIR)/styles/ieee.csl \
+		$(INS_DIR)/ieee-packages.yaml \
+		--include-before-body=$(INS_DIR)/templates/ieee-longtable-fix-preamble.latex \
+		--include-before-body=$(INS_DIR)/ieee-author-preamble.latex \
+		--template=$(INS_DIR)/templates/ieee.latex \
 		-o $(OUT_DIR)$(subst ieee,$(PAPER)-iee,$@) $(DIR)$(PAPER).md
 	rm ./IEEEtran.cls
 
 acm.pdf acm.tex:
-	cp ./styles/acmart.cls .
+	cp $(INS_DIR)/styles/acmart.cls .
 	mkdir -p $(OUT_DIR)
 	pandoc  --wrap=preserve \
 		--filter pandoc-crossref \
 		--filter pandoc-citeproc \
-		--filter ./pandoc-tools/table-filter.py \
-		--filter ./pandoc-tools/bib-filter.py \
-		--csl=./styles/acm.csl \
+		--filter $(INS_DIR)/pandoc-tools/table-filter.py \
+		--filter $(INS_DIR)/pandoc-tools/bib-filter.py \
+		--csl=$(INS_DIR)/styles/acm.csl \
 		--number-sections \
-		./acm-packages.yaml \
-		--include-before-body=./templates/acm-longtable-fix-preamble.latex \
-		--include-before-body=./acm-author-preamble.latex \
-		--template=./templates/acm.latex \
+		$(INS_DIR)/acm-packages.yaml \
+		--include-before-body=$(INS_DIR)/templates/acm-longtable-fix-preamble.latex \
+		--include-before-body=$(INS_DIR)/acm-author-preamble.latex \
+		--template=$(INS_DIR)/templates/acm.latex \
 		-o $(OUT_DIR)$(subst acm,$(PAPER)-acm,$@) $(DIR)$(PAPER).md
 	rm ./acmart.cls
 
 lncs.pdf lncs.tex:
-	cp ./styles/llncs.cls .
+	cp $(INS_DIR)/styles/llncs.cls .
 	mkdir -p $(OUT_DIR)
 	pandoc  --wrap=preserve \
 		--filter pandoc-crossref \
 		--filter pandoc-citeproc \
-		--filter ./pandoc-tools/table-filter.py \
-		--filter ./pandoc-tools/bib-filter.py \
-		--csl=./styles/llncs.csl \
+		--filter $(INS_DIR)/pandoc-tools/table-filter.py \
+		--filter $(INS_DIR)/pandoc-tools/bib-filter.py \
+		--csl=$(INS_DIR)/styles/llncs.csl \
 		--number-sections \
-		./llncs-packages.yaml \
-		--template=./templates/llncs.latex \
+		$(INS_DIR)/llncs-packages.yaml \
+		--template=$(INS_DIR)/templates/llncs.latex \
 		-o $(OUT_DIR)$(subst lncs,$(PAPER)-lncs,$@) $(DIR)$(PAPER).md
 	rm ./llncs.cls
 

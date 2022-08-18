@@ -22,15 +22,10 @@ To generate a docker image named workbook, run:
 
 # Run
 
-To start the docker image run:
+To start the docker image run (note: omit `.md` extension):
 
-`docker run  -it --mount src=`pwd`,target=/workspace,type=bind -p 8888:8888 --net=host workbook`
+`docker run -it --mount src="$(pwd)",target=/paper,type=bind -e PAPER=my_paper workbook`
 
-# Building papers with docker and pandoc
-
-Within the fresh shell running on the docker workspace instance run:
-
-`make`
 
 # Building papers the hard way:
 
