@@ -18,9 +18,8 @@ ieee.pdf ieee.tex:
 		--csl=$(INS_DIR)/styles/ieee.csl \
 		$(INS_DIR)/ieee-packages.yaml \
 		--include-before-body=$(INS_DIR)/templates/ieee-longtable-fix-preamble.latex \
-		--include-before-body=$(INS_DIR)/ieee-author-preamble.latex \
 		--template=$(INS_DIR)/templates/ieee.latex \
-		-o $(OUT_DIR)$(subst ieee,$(PAPER)-iee,$@) $(DIR)$(PAPER).md
+		-o $(OUT_DIR)$(subst ieee,$(PAPER)-ieee,$@) $(DIR)$(PAPER).md
 	rm ./IEEEtran.cls
 
 acm.pdf acm.tex:

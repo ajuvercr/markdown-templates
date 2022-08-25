@@ -209,34 +209,20 @@ $if(subtitle)$
 \providecommand{\subtitle}[1]{}
 \subtitle{$subtitle$}
 $endif$
+
 $if(author)$
-%\author{
-%$for(author)$
-%	$if(author.name)$
-%		\alignauthor
-%		$author.name$\\
-%		$if(author.affiliation)$
-%			\affaddr{$author.affiliation$}\\
-%		$endif$
-%		$if(author.email)$
-%			\email{$author.email$}\\
-%		$endif$
-%	$endif$
-%	$sep$ \alignauthor
-%$endfor$
-%}
 \author{$for(author)$
 $if(author.name)$
-	$author.name$\\
+\IEEEauthorblockN{$author.name$}
+$else$
+\IEEEauthorblockN{$author$}
 $endif$
-$if(author.affiliation)$
-	\affaddr{$author.affiliation$}\\
+$if(author.institute)$
+\IEEEauthorblockA{$author.institute$}
 $endif$
-$if(author.email)$
-	\email{$author.email$}\\
+\and $endfor$}
 $endif$
-$sep$ \and $endfor$}
-$endif$
+
 \date{$date$}
 
 \begin{document}

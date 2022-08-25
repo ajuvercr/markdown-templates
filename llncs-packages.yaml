@@ -1,11 +1,4 @@
 ---
-author:
-    - Beau Johnston\inst{1}
-    - Sarah Somebody\inst{2}
-    - Joan Otherperson\inst{1}
-institute:
-    - The Australian National University \newline \email{\{beau.johnston,jotherperson\}@anu.edu.au} \and University of Coolville \newline \email{ssomebody@coolville.edu}}
-
 documentclass: llncs
 classoption: runningheads
 header-includes:

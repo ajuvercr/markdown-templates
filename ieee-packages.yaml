@@ -10,6 +10,7 @@ header-includes:
     - \usepackage{amsmath,amssymb,amsfonts}
     - \usepackage{textcomp}
     - \usepackage{xargs}
+    - \usepackage[pdftex,dvipsnames]{xcolor}
     - \usepackage[colorinlistoftodos,prependcaption,textsize=small,color=yellow]{todonotes}
     - \usepackage{regexpatch}
     - \usepackage{adjustbox}

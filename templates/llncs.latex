@@ -144,11 +144,22 @@ $endif$
 $if(title)$
 \title{$title$}
 $endif$
+
 $if(subtitle)$
 \subtitle{$subtitle$}
 $endif$
-\author{$for(author)$$author$$sep$ \and $endfor$}
+
+\author{$for(author)$
+$if(author.name)$
+$author.name$
+$else$
+$author$
+$endif$
+$sep$ \and
+$endfor$}
+
 \date{$date$}
+
 $for(header-includes)$
 $header-includes$
 $endfor$

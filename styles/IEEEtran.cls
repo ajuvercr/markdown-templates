@@ -982,6 +982,7 @@
 \jot=\IEEEnormaljot\relax
 
 
+\let\newline\\
 
 
 % V1.6, we are now going to fine tune the interword spacing

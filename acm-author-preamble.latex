@@ -7,36 +7,6 @@
 \acmArticle{4}
 \acmPrice{\$15.00}
 
-\author{Beau Johnston}
-\orcid{0000-0001-5426-1415}
-\affiliation{
-    \department{Research School of Computer Science}
-    \institution{Australian National University}
-    \city{Canberra} 
-    \state{Australia}
-}
-\email{beau.johnston@anu.edu.au}
-
-\author{Sarah Somebody}
-\orcid{0000-0000-0000-0000}
-\affiliation{
-    \department{School of Awesome}
-    \institution{University of Coolville}
-    \city{Moon Base Alpha} 
-    \state{The Moon}
-}
-\email{ssomebody@coolville.edu}
-
-\author{Joan Otherperson}
-\orcid{0000-0002-3588-9896}
-\affiliation{
-    \department{Deathray Development Team}
-    \institution{Evil Underground Lair Inc}
-    \city{Alaska}
-    \state{US}
-}
-\email{jotherperson@evil.co}
-
 \begin{CCSXML}
     <ccs2012>
     <concept>

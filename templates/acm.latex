@@ -186,12 +186,29 @@ $for(author)$
 $if(author.name)$
 \author{$author.name$}
 $endif$
-%$if(author.affiliation)$
-%\affiliation{$author.affiliation$}
-%$endif$
+
+% should be improved
+$if(author.institute)$
+\affiliation{
+$if(author.department)$
+\department($author.department$)
+$endif$
+$if(author.institute)$
+\institution{$author.institute$}
+$endif$
+$if(author.city)$
+\city($author.city$)
+$endif$
+$if(author.state)$
+\state($author.state$)
+$endif$
+}
+$endif$
+
 $if(author.email)$
 \email{$author.email$}
 $endif$
+
 $endfor$
 $endif$
 
