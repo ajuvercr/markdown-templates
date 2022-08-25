@@ -1,0 +1,17 @@
+name: 'Compile markdown paper to pdf'
+description: 'Compiles paper to acm, lncs and ieee'
+inputs:
+  paper: 
+    description: 'Paper to build (without extension)'
+    required: true
+  location:
+    description: 'Location github thing'
+    required: true
+runs:
+  using: 'docker'
+  image: 'docker://seacoal/markdown-templates:0.1.0'
+  env:
+    PAPER: ${{inputs.paper}}
+    DIR: ${{inputs.location}}
+    OUT_DIR: ${{inputs.location}}out/
+
